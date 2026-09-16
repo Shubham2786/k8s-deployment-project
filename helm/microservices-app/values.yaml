@@ -1,0 +1,38 @@
+# Frontend configuration
+frontend:
+  replicas: 2
+  image:
+    repository: demo-frontend
+    tag: "1.0"
+    pullPolicy: Never
+  service:
+    port: 80
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+
+# Backend configuration
+backend:
+  replicas: 2
+  image:
+    repository: demo-backend
+    tag: "1.0"
+    pullPolicy: Never
+  service:
+    port: 5000
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: nginx
